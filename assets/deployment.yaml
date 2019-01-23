@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logger
+spec:
+  selector:
+    matchLabels:
+      app: logger
+  replicas: 0
+  template:
+    metadata:
+      labels:
+        app: logger
+    spec:
+      containers:
+      - name: logger
+        image: innoweek/logger:v2
+        imagePullPolicy: Always
+        env:
+        - name: SIZE
+          value: "10000"
